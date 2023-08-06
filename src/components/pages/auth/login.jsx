@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "../forms/login.css";
-import { Form, Btn, ErrorMsg, ErrorMsgContainer, TxtField } from "../form";
+import "../auth/login.css";
+import { Form, Btn, ErrorMsg, ErrorMsgContainer, TxtField } from "../../form";
 import { Route, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 

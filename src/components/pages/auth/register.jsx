@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useEffect } from "react";
-
-import { Form, ErrorMsg, ErrorMsgContainer, Btn, TxtField } from "../form";
+import { Form, ErrorMsg, ErrorMsgContainer, Btn, TxtField } from "../../form";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Route, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useCookies } from "react-cookie";
 
 export const NavLink = styled(Link)`
   color: blue;
@@ -37,6 +38,8 @@ export const Register = () => {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const [cookies, setCookies] = useCookies(["user_token"]);
+
   function Index() {
     setTimeout(() => {
       // 👇 Redirects to about page, note the `replace: true`
