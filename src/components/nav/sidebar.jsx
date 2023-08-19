@@ -29,7 +29,7 @@ export const SidebarContainer = styled.div`
   overflow-x: hidden;
   height: 100vh;
   width: 100%;
-  background-color: white;
+  background-color: #9a616d;
   padding: 20px;
 `;
 export default Sidebar;

@@ -65,41 +65,51 @@ const UserDashboard = () => {
         <>
           <Sidebar />
           <SidebarContainer className="fadeIn">
-            <br />
-            <div className="row">
-              <div className="col-lg-4">
-                <ImgContainer>
-                  <ProfileImage
-                    src={profileImage}
-                    className="img-fluid profile-img"
-                  />
-                </ImgContainer>
-              </div>
-              <div className="col-lg-6">
-                <div className="profile">
-                  <h6>
-                    Name: {user?.firstName} {user?.middleName} {user?.lastName}
-                  </h6>
-                  <h6>Email: {user?.email}</h6>
-                  <h6>Dob: 3/3/2023</h6>
-                  <h6>Registration Number: ABC123XYZ1</h6>
-                  <h6>State of Origin: Kaduna</h6>
+            <div
+              className="container py-5 h-100"
+              style={{
+                backgroundColor: "white",
+                width: "80%",
+                margin: "0",
+                borderRadius: "1rem",
+              }}
+            >
+              <div className="row">
+                <div className="col-lg-4">
+                  <ImgContainer>
+                    <ProfileImage
+                      src={profileImage}
+                      className="img-fluid profile-img"
+                    />
+                  </ImgContainer>
+                </div>
+                <div className="col-lg-6">
+                  <div className="profile">
+                    <h6>
+                      Name: {user?.firstName} {user?.middleName}{" "}
+                      {user?.lastName}
+                    </h6>
+                    <h6>Email: {user?.email}</h6>
+                    <h6>Dob: 3/3/2023</h6>
+                    <h6>Registration Number: ABC123XYZ1</h6>
+                    <h6>State of Origin: Kaduna</h6>
+                  </div>
                 </div>
               </div>
-            </div>
-            <hr />
-            <h3>
-              <center>Institution Of Study</center>
-            </h3>
-            <hr />
-            <div className="row">
-              <div className="col-lg-6">
-                <h4>First Choice</h4>
-                <p>Type: Degree Awarding</p>
-                <p>Institution: Kaduna State University(KASU)</p>
-                <p>Faculty: Sciences</p>
+              <hr />
+              <h3>
+                <center>Institution Of Study</center>
+              </h3>
+              <hr />
+              <div className="row">
+                <div className="col-lg-6">
+                  <h4>First Choice</h4>
+                  <p>Type: Degree Awarding</p>
+                  <p>Institution: Kaduna State University(KASU)</p>
+                  <p>Faculty: Sciences</p>
 
-                <p>Course: Bsc. Computer Science</p>
+                  <p>Course: Bsc. Computer Science</p>
+                </div>
               </div>
             </div>
             <br />

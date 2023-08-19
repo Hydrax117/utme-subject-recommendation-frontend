@@ -50,40 +50,50 @@ export const AdminViewUniversity = () => {
         <>
           <AdminSidebar />
           <SidebarContainer className="fadeIn">
-            <h1>List of all universities</h1>
+            <div
+              className="container py-5 h-80"
+              style={{
+                backgroundColor: "white",
+                width: "80%",
+                margin: "0",
+                borderRadius: "1rem",
+              }}
+            >
+              <h1>List of all universities</h1>
 
-            <div className="row">
-              <div className="col-md-10">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <td>name</td>
-                      <td>address</td>
-                      <td>state</td>
-                      <td>view</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {universities.map((university) => (
+              <div className="row">
+                <div className="col-md-10">
+                  <table className="table">
+                    <thead>
                       <tr>
-                        <td>{university?.name}</td>
-                        <td>{university?.address}</td>
-                        <td>{university?.state}</td>
-                        <td>
-                          <button
-                            className="btn btn-primary"
-                            onClick={() => {
-                              UniversityDetails(`${university?._id}`);
-                              console.log(`${university?._id}`);
-                            }}
-                          >
-                            View
-                          </button>
-                        </td>
+                        <td>name</td>
+                        <td>address</td>
+                        <td>state</td>
+                        <td>view</td>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {universities.map((university) => (
+                        <tr>
+                          <td>{university?.name}</td>
+                          <td>{university?.address}</td>
+                          <td>{university?.state}</td>
+                          <td>
+                            <button
+                              className="btn btn-primary"
+                              onClick={() => {
+                                UniversityDetails(`${university?._id}`);
+                                console.log(`${university?._id}`);
+                              }}
+                            >
+                              View
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </SidebarContainer>

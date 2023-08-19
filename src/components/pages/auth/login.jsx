@@ -25,6 +25,7 @@ export const Login = () => {
   const [error, setError] = useState("");
   const [user, setUser] = useState();
   const [userType, setUserType] = useState();
+  const logo = require("../../../images/loginlogo.jpeg");
 
   const [cookies, setCookies] = useCookies(["user"]);
 
@@ -55,11 +56,9 @@ export const Login = () => {
     };
     event.preventDefault();
     if (`${email}` === "" || `${password}` === "") {
-      document.getElementById("errorContainer").style.display = "block";
-      document.getElementById("error").innerHTML = "* please fill in the above";
-      // document
-      //   .getElementById("error")
-      //   .insertAdjacentHTML("beforeend", "<div><h1> Hello world</h1></div>");
+      toast.error("please fill in all the reqiured fields", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     } else {
       if (`${email}`.includes("@")) {
         const user = { email, password };
@@ -100,54 +99,111 @@ export const Login = () => {
 
   return (
     <>
-      <div className="container">
-        <Form className="form">
-          <div className="login">
-            <TxtField
-              className="txt"
-              label="email"
-              name="email"
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                document.getElementById("errorContainer").style.display =
-                  "none";
-              }}
-            />
-            <br /> <br />
-            <TxtField
-              className="txt"
-              label="password"
-              type="password"
-              name="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                document.getElementById("errorContainer").style.display =
-                  "none";
-              }}
-            />
-            <br /> <br />
-            <div>
-              <ToastContainer />
+      <section className="vh-100" style={{ backgroundColor: "#9A616D" }}>
+        <div className="container py-5 h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col col-xl-10">
+              <div className="card" style={{ borderRadius: "1rem" }}>
+                <div className="row g-0">
+                  <div className="col-md-6 col-lg-5 d-none d-md-block">
+                    <img
+                      src={logo}
+                      alt="login form"
+                      className="img-fluid"
+                      style={{ borderRadius: "1rem 0 0 1rem" }}
+                    />
+                  </div>
+                  <div className="col-md-6 col-lg-7 d-flex align-items-center">
+                    <div className="card-body p-4 p-lg-5 text-black">
+                      <form>
+                        <div className="d-flex align-items-center mb-3 pb-1">
+                          <i
+                            className="fas fa-cubes fa-2x me-3"
+                            style={{ color: "#ff6219" }}
+                          />
+                          <span className="h1 fw-bold mb-0">Welcome Back</span>
+                        </div>
+                        <h5
+                          className="fw-normal mb-3 pb-3"
+                          style={{ letterSpacing: 1 }}
+                        >
+                          Sign into your account
+                        </h5>
+                        <div className="form-outline mb-4">
+                          <label
+                            className="form-label"
+                            htmlFor="form2Example17"
+                          >
+                            Email address
+                          </label>
+                          <input
+                            type="email"
+                            id="form2Example17"
+                            className="form-control form-control-lg"
+                            placeholder="abc@gmail.com"
+                            value={email}
+                            onChange={(e) => {
+                              setEmail(e.target.value);
+                            }}
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
+                          <label
+                            className="form-label"
+                            htmlFor="form2Example27"
+                          >
+                            Password
+                          </label>
+                          <input
+                            type="password"
+                            id="form2Example27"
+                            className="form-control form-control-lg"
+                            placeholder="******"
+                            value={password}
+                            onChange={(e) => {
+                              setPassword(e.target.value);
+                            }}
+                          />
+                        </div>
+                        <div>
+                          <ToastContainer style={{ marginTop: "35%" }} />
+                        </div>
+                        <div className="pt-1 mb-4">
+                          <button
+                            className="btn btn-dark btn-lg btn-block"
+                            type="button"
+                            onClick={handleSubmit}
+                          >
+                            Login
+                          </button>
+                        </div>
+                        <a className="small text-muted" href="#!">
+                          Forgot password?
+                        </a>
+                        <p
+                          className="mb-5 pb-lg-2"
+                          style={{ color: "#393f81" }}
+                        >
+                          Don't have an account?{" "}
+                          <NavLink style={{ color: "#393f81" }} to="/register">
+                            register here
+                          </NavLink>
+                        </p>
+                        <a href="#!" className="small text-muted">
+                          Terms of use.
+                        </a>
+                        <a href="#!" className="small text-muted">
+                          Privacy policy
+                        </a>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <ErrorMsgContainer id="errorContainer">
-              <ErrorMsg id="error">something happed</ErrorMsg>
-            </ErrorMsgContainer>
-            <br /> <br />
-            <Btn onClick={handleSubmit}>Submit</Btn>
           </div>
-          <br />
-          <p>
-            don't have an account? <br /> click
-            <NavLink to="/register">here</NavLink>
-            to signup.
-          </p>
-        </Form>{" "}
-        <br />
-        <br />
-      </div>
+        </div>
+      </section>
     </>
   );
 };
