@@ -76,8 +76,17 @@ export const Register = () => {
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
+
+          if (result.success === false) {
+            var a = result.message.toString().toUpperCase();
+            toast.error(`error!,${a}`, {
+              position: toast.POSITION.BOTTOM_CENTER,
+            });
+          }
           if (result.data["email"] == email) {
-            setMessage("Registration SuccessFull!!");
+            toast.success("Registration Successfull!", {
+              position: toast.POSITION.BOTTOM_CENTER,
+            });
 
             Index();
           }
@@ -91,9 +100,7 @@ export const Register = () => {
       <div className="container">
         <Form>
           <div class="login">
-            <Msgbox>
-              <Message>{message}</Message>
-            </Msgbox>{" "}
+            <ToastContainer />
             <br />
             <TxtField
               className="txt"

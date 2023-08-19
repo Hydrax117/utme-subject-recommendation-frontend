@@ -10,12 +10,13 @@ export const TxtField = styled(TextField)`
   }
 `;
 export const Form = styled.div`
-  width: 40%;
-  margin: 4% 27%;
+  width: 50%;
+  margin: auto;
+  margin-top: 5%;
   text-align: center;
-  height: auto;
+  height: 400px;
   padding: 40px;
-  background: white;
+  background: grey;
   box-shadow: 1px 2px 2px 2px;
   @media only screen and (max-width: 1000px) {
     width: 100%;
@@ -36,7 +37,7 @@ export const ErrorMsg = styled.p`
   color: red;
 `;
 export const Btn = styled.label`
-  background: green;
+  background: blue;
   cursor: pointer;
   text-align: center;
   padding: 16px;

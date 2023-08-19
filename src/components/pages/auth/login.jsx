@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 import "../auth/login.css";
 import { Form, Btn, ErrorMsg, ErrorMsgContainer, TxtField } from "../../form";
 import { Route, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import styled from "styled-components";
 export const NavLink = styled(Link)`
@@ -21,14 +24,18 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [user, setUser] = useState();
+  const [userType, setUserType] = useState();
+
+  const [cookies, setCookies] = useCookies(["user"]);
 
   const navigate = useNavigate();
 
   function Index() {
     setTimeout(() => {
       // 👇 Redirects to about page, note the `replace: true`
-      navigate("/", { replace: true });
-    }, 3000);
+      // navigate("/user/dashboard", { replace: true });
+      window.location.replace("/user/dashboard");
+    }, 5000);
   }
 
   const handleSubmit = async (event) => {
@@ -55,25 +62,36 @@ export const Login = () => {
       //   .insertAdjacentHTML("beforeend", "<div><h1> Hello world</h1></div>");
     } else {
       if (`${email}`.includes("@")) {
-        // fetch("http://localhost:4000/login", requestOptions)
-        //   .then((response) => response.json())
-        //   .then((result) => {
-        //     if (result.data["email"] == email) {
-        //       setUser(response)
-        //       Index();
-        //     }
-        //   })
-        //   .catch((error) => console.log("s error", setError(error.message)));
         const user = { email, password };
         const response = await axios.post("http://localhost:4000/login", user);
         if (response.data.status === 200) {
           // store the user in localStorage
-          window.localStorage.setItem("user", response.data.data.email);
-          window.localStorage.setItem("isLoggin", true);
-          window.localStorage.setItem("Token", response.data.data.token);
+          setCookies("token", response.data.data.token, {
+            maxAge: 28800,
+            path: "/",
+          });
+          setCookies("id", response.data.data._id, {
+            maxAge: 28800,
+            path: "/",
+          });
+          setCookies("email", response.data.data.email, {
+            maxAge: 28800,
+            path: "/",
+          });
+          setCookies("userType", response.data.data.userType, {
+            maxAge: 28800,
+            path: "/",
+          });
+          toast.success("Login Successfull", {
+            position: toast.POSITION.TOP_CENTER,
+          });
 
-          console.log(response.data.data);
+          Index();
+          console.log(response.data);
         } else {
+          toast.error(response.data.message, {
+            position: toast.POSITION.TOP_CENTER,
+          });
           console.log(response.data.message);
         }
       }
@@ -83,8 +101,8 @@ export const Login = () => {
   return (
     <>
       <div className="container">
-        <Form class="form">
-          <div class="login">
+        <Form className="form">
+          <div className="login">
             <TxtField
               className="txt"
               label="email"
@@ -111,6 +129,9 @@ export const Login = () => {
               }}
             />
             <br /> <br />
+            <div>
+              <ToastContainer />
+            </div>
             <ErrorMsgContainer id="errorContainer">
               <ErrorMsg id="error">something happed</ErrorMsg>
             </ErrorMsgContainer>
@@ -123,7 +144,9 @@ export const Login = () => {
             <NavLink to="/register">here</NavLink>
             to signup.
           </p>
-        </Form>
+        </Form>{" "}
+        <br />
+        <br />
       </div>
     </>
   );

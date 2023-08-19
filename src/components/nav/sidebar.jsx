@@ -14,7 +14,7 @@ const Sidebar = () => {
           <Link to="/Subject-combination">Subject Combination</Link>
         </li>
         <li>
-          <Link to="/services">Services</Link>
+          <Link to="/user/update-profile">Update Profile</Link>
         </li>
         <li>
           <Link to="/contact">Contact</Link>
@@ -24,6 +24,12 @@ const Sidebar = () => {
   );
 };
 export const SidebarContainer = styled.div`
-  margin-left: 250px;
+  margin-left: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
 `;
 export default Sidebar;

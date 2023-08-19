@@ -1,8 +1,9 @@
 .sidebar {
   width: 200px;
-  height: 210%;
-  background-color: #f0f0f0;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
+  overflow: auto;
 }
 
 .menu {
@@ -16,11 +17,12 @@
 }
 
 .menu li a:hover {
-  background: black;
+  background: blue;
   transition: 2s ease-in-out;
 }
 .menu li a {
   text-decoration: none;
   display: block;
   padding: 16px 0;
+  color: white;
 }
