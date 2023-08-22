@@ -177,119 +177,137 @@ export const SubjectConmination = () => {
         <>
           <Sidebar />
           <SidebarContainer className="fadeIn">
-            <h1>this is the kHome</h1>
-
-            <div className="row">
-              <div className="col-md-6">
-                <select name="uni" id="uni" onChange={OnUniversityChange}>
-                  <option value="none">----</option>
-
-                  {universities.map((university) => (
-                    <option value={university._id}>{university.name}</option>
-                  ))}
-                </select>
-
-                <div
-                  className="fadeIn"
-                  id="facultyDiv"
-                  style={{ display: "none" }}
-                >
-                  <h3>Select Faculty</h3>
-                  <select id="faculty" onChange={onFacultyChange}>
+            <div
+              className="container py-5 h-100"
+              style={{
+                backgroundColor: "white",
+                width: "80%",
+                margin: "0",
+                borderRadius: "1rem",
+              }}
+            >
+              {" "}
+              <div className="row">
+                <div className="col-md-6">
+                  <h3>Select University</h3>
+                  <select name="uni" id="uni" onChange={OnUniversityChange}>
                     <option value="none">----</option>
 
-                    {faculties.length > 0 ? (
-                      faculties.map((faculty) => (
-                        <option
-                          key={faculty._id.toString()}
-                          value={faculty._id}
-                        >
-                          {faculty.name}
-                        </option>
-                      ))
-                    ) : (
-                      <p>No Faculties yet</p>
-                    )}
+                    {universities.map((university) => (
+                      <option value={university._id}>{university.name}</option>
+                    ))}
                   </select>
-                </div>
 
-                <div
-                  className="fadeIn"
-                  id="departmentDiv"
-                  style={{ display: "none" }}
-                >
-                  <h3>select Department</h3>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <select id="departments" onChange={OndepartmentChange}>
-                        <option value="none">----</option>
+                  <div
+                    className="fadeIn"
+                    id="facultyDiv"
+                    style={{ display: "none" }}
+                  >
+                    <h3>Select Faculty</h3>
+                    <select id="faculty" onChange={onFacultyChange}>
+                      <option value="none">----</option>
 
-                        {departments.length > 0 ? (
-                          departments.map((deparment) => (
-                            <>
-                              <option
-                                key={deparment._id.toString()}
-                                value={deparment._id}
-                              >
-                                {deparment?.name}
-                              </option>
-                            </>
-                          ))
-                        ) : (
-                          <p> departments yet</p>
-                        )}
-                      </select>
+                      {faculties.length > 0 ? (
+                        faculties.map((faculty) => (
+                          <option
+                            key={faculty._id.toString()}
+                            value={faculty._id}
+                          >
+                            {faculty.name}
+                          </option>
+                        ))
+                      ) : (
+                        <p>No Faculties yet</p>
+                      )}
+                    </select>
+                  </div>
+
+                  <div
+                    className="fadeIn"
+                    id="departmentDiv"
+                    style={{ display: "none" }}
+                  >
+                    <h3>select Department</h3>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <select id="departments" onChange={OndepartmentChange}>
+                          <option value="none">----</option>
+
+                          {departments.length > 0 ? (
+                            departments.map((deparment) => (
+                              <>
+                                <option
+                                  key={deparment._id.toString()}
+                                  value={deparment._id}
+                                >
+                                  {deparment?.name}
+                                </option>
+                              </>
+                            ))
+                          ) : (
+                            <p> departments yet</p>
+                          )}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    className="fadeIn"
+                    id="courseDiv"
+                    style={{ display: "none" }}
+                  >
+                    <h3>List of courses</h3>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <select id="course" onChange={OnCourseChange}>
+                          <option value="none">----</option>
+
+                          {courses.length > 0 ? (
+                            courses.map((course) => (
+                              <>
+                                <option
+                                  key={course._id.toString()}
+                                  value={course._id}
+                                >
+                                  {course?.title}
+                                </option>
+                              </>
+                            ))
+                          ) : (
+                            <p>Nocourses yet</p>
+                          )}
+                        </select>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <div
-                  className="fadeIn"
-                  id="courseDiv"
-                  style={{ display: "none" }}
+                  className="col-md-5 fadeIn"
+                  id="details"
+                  style={{
+                    display: "none",
+                    boxShadow: "1px 1px 20px ",
+                    margin: "5px",
+                  }}
                 >
-                  <h3>List of courses</h3>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <select id="course" onChange={OnCourseChange}>
-                        <option value="none">----</option>
+                  <h3 style={{ textAlign: "center", padding: "10px" }}>
+                    Selected Course Details
+                  </h3>
+                  <p>Course Title :{course.title}</p>
+                  <p>Faculty: {course?.faculty}</p>
+                  <p>Deparment: {course?.department}</p>
 
-                        {courses.length > 0 ? (
-                          courses.map((course) => (
-                            <>
-                              <option
-                                key={course._id.toString()}
-                                value={course._id}
-                              >
-                                {course?.title}
-                              </option>
-                            </>
-                          ))
-                        ) : (
-                          <p>Nocourses yet</p>
-                        )}
-                      </select>
-                    </div>
-                  </div>
+                  <p>
+                    Recommended subjects: {course.recomSubject1},
+                    {course.recomSubject2},{course.recomSubject3},
+                    {course.recomSubject4} <br /> <br />
+                    <button className="btn btn-primary" onClick={OnSave}>
+                      Procede to payment
+                    </button>
+                  </p>
                 </div>
-              </div>
-
-              <div
-                className="col-md-6 fadeIn"
-                id="details"
-                style={{ display: "none" }}
-              >
-                <p>Course details</p>
-                <p>course title :{course.title}</p>
-                <p>faculty: {course?.faculty}</p>
-                <p>deparment: {course?.department}</p>
-
-                <p>
-                  recommended subjects: {course.recomSubject1},
-                  {course.recomSubject2},{course.recomSubject3},
-                  {course.recomSubject4}
-                  <button onClick={OnSave}>Procede to payment</button>
-                </p>
               </div>
             </div>
           </SidebarContainer>

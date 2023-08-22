@@ -6,7 +6,6 @@ import AdminSidebar from "../../nav/adminSidebar";
 import { Route, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import e from "cors";
 
 export const UniversityDetails = () => {
   const { id } = useParams();
@@ -16,6 +15,28 @@ export const UniversityDetails = () => {
   const [faculties, setFaculties] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [departmentName, setDepartmentName] = useState([]);
+  const subjects = [
+    "Accounting",
+    "Agricultral Science",
+    "Arabic",
+    "Biology",
+    "Chemistry",
+    "Christian Religion Studies",
+    "Civic Education",
+    "Commerce",
+    "Computer Studies",
+    "Economics",
+    "Fisheries",
+    "Geography",
+    "Government",
+    "Fisheries",
+    "Hausa",
+    "Islamic Studies",
+    "Literature in English",
+    "Mathematics",
+    "Physics",
+    "Technical Drawing",
+  ];
 
   const [facultyname, setFacultyname] = useState("");
   const [facultymarks, setFacultymarks] = useState("");
@@ -150,6 +171,14 @@ export const UniversityDetails = () => {
     }
   };
 
+  var modal = document.getElementById("id01");
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onClick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
   const addcourse = async () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -186,119 +215,199 @@ export const UniversityDetails = () => {
         <>
           <AdminSidebar />
           <SidebarContainer>
-            <div>
-              <ToastContainer style={{ marginTop: "30%" }} />
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-                <h3>Add course</h3>
-                <div className="course">
-                  <h4>Course title</h4> <br />
-                  <input type="text" name="" id="" /> <br /> <br />
-                  <h3>Select Faculty</h3>
-                  <select id="faculty1" onChange={onFacultyChange}>
-                    <option value="none">----</option>
-
-                    {faculties.length > 0 ? (
-                      faculties.map((faculty) => (
-                        <option
-                          key={faculty._id.toString()}
-                          value={faculty._id}
-                        >
-                          {faculty.name}
-                        </option>
-                      ))
-                    ) : (
-                      <p>No Faculties yet</p>
-                    )}
-                  </select>
-                  <br /> <br />
-                  <select name="" id="">
-                    <option value="">Select department</option>
-                  </select>
-                </div>
+            <section
+              className="container   py-5 h-100"
+              style={{
+                backgroundColor: "#9a616d",
+                width: "85%",
+                margin: "0px",
+                padding: "50px",
+                borderRadius: "1rem",
+                overflow: "auto",
+              }}
+            >
+              <div>
+                <ToastContainer style={{ marginTop: "30%" }} />
               </div>
-              <div className="col-md-6">
-                <div className="recomm">
-                  <h5>Recommended Subject 1</h5>
-                  <input type="text" name="" id="" />
-                </div>
-
-                <div className="recomm">
-                  <h5>Recommended Subject 2</h5>
-                  <input type="text" name="" id="" />
-                </div>
-
-                <div className="recomm">
-                  <h5>Recommended Subject 3</h5>
-                  <input type="text" name="" id="" />
-                </div>
-
-                <div className="recomm">
-                  <h5>Recommended Subject 4</h5>
-                  <input type="text" name="" id="" />
-                </div>
-              </div>
-
-              <div
-                className="btn btn-primary"
-                style={{ margin: "10px", width: "80px" }}
+              <section
+                className="container   py-5 h-70"
+                style={{
+                  backgroundColor: "white",
+                  width: "100%",
+                  margin: "0px",
+                  padding: "50px",
+                  borderRadius: "1rem",
+                }}
               >
-                Add
-              </div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-md-4">
-                <h3>add faculty</h3>
-                <input
-                  type="text"
-                  value={facultyname}
-                  placeholder="Faculty Name"
-                  onChange={(event) => setFacultyname(event.target.value)}
-                />{" "}
-                <br /> <br />
-                <input
-                  type="text"
-                  value={facultymarks}
-                  placeholder="cutoff marks"
-                  onChange={(event) => setFacultymarks(event.target.value)}
-                />{" "}
-                <br /> <br />
-                <button className="btn btn-primary" onClick={addFaculty}>
-                  Add
-                </button>
-              </div>
-              <div className="col-md-4">
-                <h3>add department</h3>
-                <select id="faculty">
-                  <option value="none">Select Faculty</option>
+                <div className="row " style={{ borderRadius: "1rem" }}>
+                  <div className="col-md-6">
+                    <h3>Add course</h3>
+                    <div className="course">
+                      <h4>Course title</h4> <br />
+                      <input type="text" name="" id="" /> <br /> <br />
+                      <h3>Select Faculty</h3>
+                      <select id="faculty1" onChange={onFacultyChange}>
+                        <option value="none">----</option>
 
-                  {faculties.length > 0 ? (
-                    faculties.map((faculty) => (
-                      <option key={faculty._id.toString()} value={faculty._id}>
-                        {faculty.name}
-                      </option>
-                    ))
-                  ) : (
-                    <p>No Faculties yet</p>
-                  )}
-                </select>
-                <br /> <br />
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  placeholder="department name"
-                  value={departmentName}
-                  onChange={(event) => setDepartmentName(event.target.value)}
-                />{" "}
-                <br /> <br />
-                <button className="btn btn-primary" onClick={addDepartment}>
-                  Add
-                </button>
-              </div>
-            </div>
+                        {faculties.length > 0 ? (
+                          faculties.map((faculty) => (
+                            <option
+                              key={faculty._id.toString()}
+                              value={faculty._id}
+                            >
+                              {faculty.name}
+                            </option>
+                          ))
+                        ) : (
+                          <p>No Faculties yet</p>
+                        )}
+                      </select>
+                      <br /> <br />
+                      <select name="" id="">
+                        <option value="">Select department</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="recomm">
+                      <h5>Jamb Subject 1</h5>
+                      <select>
+                        <option value="Engish">Use of English</option>
+                      </select>
+                    </div>
+
+                    <div className="recomm">
+                      <h5>Jamb Subject 2</h5>
+                      <select name="" id="">
+                        <option value="none">------</option>
+                        {subjects.map((subject) => (
+                          <option value={subject}>{subject}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="recomm">
+                      <h5>Jamb Subject 3</h5>
+                      <select name="" id="">
+                        <option value="none">------</option>
+                        {subjects.map((subject) => (
+                          <option value={subject}>{subject}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="recomm">
+                      <h5>Recommended Subject 4</h5>
+                      <select name="" id="">
+                        <option value="none">------</option>
+                        {subjects.map((subject) => (
+                          <option value={subject}>{subject}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div
+                    className="btn btn-primary"
+                    style={{ margin: "10px", width: "80px" }}
+                  >
+                    Add
+                  </div>
+                </div>
+              </section>
+
+              <hr />
+
+              <section
+                className="container   py-5 h-70"
+                style={{
+                  width: "100%",
+                  margin: "0px",
+                  borderRadius: "1rem",
+                }}
+              >
+                <div className="row">
+                  <div className="col-md-5">
+                    <div className="card">
+                      <div
+                        className="card-body"
+                        style={{ textAlign: "center", height: "300px" }}
+                      >
+                        <h3 className="card-text">add faculty</h3>
+                        <input
+                          type="text"
+                          value={facultyname}
+                          placeholder="Faculty Name"
+                          onChange={(event) =>
+                            setFacultyname(event.target.value)
+                          }
+                        />{" "}
+                        <br /> <br />
+                        <input
+                          type="text"
+                          value={facultymarks}
+                          placeholder="cutoff marks"
+                          onChange={(event) =>
+                            setFacultymarks(event.target.value)
+                          }
+                        />
+                        <br /> <br />
+                        <button
+                          className="btn btn-primary"
+                          onClick={addFaculty}
+                        >
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-5">
+                    <div className="card">
+                      <div
+                        className="card-body"
+                        style={{ textAlign: "center", height: "300px" }}
+                      >
+                        <h3>Add department</h3>
+                        <select id="faculty">
+                          <option value="none">Select Faculty</option>
+
+                          {faculties.length > 0 ? (
+                            faculties.map((faculty) => (
+                              <option
+                                key={faculty._id.toString()}
+                                value={faculty._id}
+                              >
+                                {faculty.name}
+                              </option>
+                            ))
+                          ) : (
+                            <p>No Faculties yet</p>
+                          )}
+                        </select>
+                        <br /> <br />
+                        <input
+                          type="text"
+                          name=""
+                          id=""
+                          placeholder="department name"
+                          value={departmentName}
+                          onChange={(event) =>
+                            setDepartmentName(event.target.value)
+                          }
+                        />{" "}
+                        <br /> <br />
+                        <button
+                          className="btn btn-primary"
+                          onClick={addDepartment}
+                        >
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </section>
           </SidebarContainer>
         </>
       )}

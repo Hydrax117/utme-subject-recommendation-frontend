@@ -25,8 +25,7 @@ const Sidebar = () => {
 };
 export const SidebarContainer = styled.div`
   margin-left: 200px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
   height: 100vh;
   width: 100%;
   background-color: #9a616d;
