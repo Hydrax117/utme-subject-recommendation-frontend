@@ -67,67 +67,65 @@ export const AddUniversity = () => {
       ) : (
         <>
           <AdminSidebar />
-          <SidebarContainer>
-            <Form>
-              <div className="formInputContainer" style={{ margin: "10px" }}>
-                <label htmlFor="">University name</label> <br />
-                <input
-                  type="text"
-                  name="uni"
-                  id=""
-                  value={university}
-                  onChange={(event) => setUniversity(event.target.value)}
-                  style={{
-                    width: "90%",
-                    caretColor: "blue",
-                  }}
-                />
-              </div>
+          <Form>
+            <div className="formInputContainer" style={{ margin: "10px" }}>
+              <label htmlFor="">University name</label> <br />
+              <input
+                type="text"
+                name="uni"
+                id=""
+                value={university}
+                onChange={(event) => setUniversity(event.target.value)}
+                style={{
+                  width: "90%",
+                  caretColor: "blue",
+                }}
+              />
+            </div>
 
-              <div className="formInputContainer" style={{ margin: "10px" }}>
-                <label htmlFor=""> Address</label> <br />
-                <input
-                  type="text"
-                  name="uni"
-                  id=""
-                  value={address}
-                  onChange={(event) => setAdress(event.target.value)}
-                  style={{
-                    width: "90%",
-                    caretColor: "blue",
-                  }}
-                />
-              </div>
+            <div className="formInputContainer" style={{ margin: "10px" }}>
+              <label htmlFor=""> Address</label> <br />
+              <input
+                type="text"
+                name="uni"
+                id=""
+                value={address}
+                onChange={(event) => setAdress(event.target.value)}
+                style={{
+                  width: "90%",
+                  caretColor: "blue",
+                }}
+              />
+            </div>
 
-              <div className="formInputContainer" style={{ margin: "10px" }}>
-                <label htmlFor="">State</label> <br />
-                <input
-                  type="text"
-                  name="uni"
-                  id=""
-                  value={state}
-                  onChange={(event) => setState(event.target.value)}
-                  style={{
-                    width: "90%",
-                    caretColor: "blue",
-                  }}
-                />{" "}
-                <br />
-                <br />
-                <div
-                  className="loader"
-                  id="load"
-                  style={{ display: "none" }}
-                ></div>
-                <button className="btn btn-primary" onClick={adding}>
-                  Add
-                </button>
-                <div>
-                  <ToastContainer style={{ marginTop: "30%" }} />
-                </div>
+            <div className="formInputContainer" style={{ margin: "10px" }}>
+              <label htmlFor="">State</label> <br />
+              <input
+                type="text"
+                name="uni"
+                id=""
+                value={state}
+                onChange={(event) => setState(event.target.value)}
+                style={{
+                  width: "90%",
+                  caretColor: "blue",
+                }}
+              />{" "}
+              <br />
+              <br />
+              <div
+                className="loader"
+                id="load"
+                style={{ display: "none" }}
+              ></div>
+              <button className="btn btn-primary" onClick={adding}>
+                Add
+              </button>
+              <div>
+                <ToastContainer style={{ marginTop: "30%" }} />
               </div>
-            </Form>
-          </SidebarContainer>
+            </div>
+          </Form>
         </>
       )}
     </>

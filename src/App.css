@@ -1,0 +1,281 @@
+.App {
+  text-align: center;
+}
+html,
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.curved {
+  background: skyblue;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* start of loader styling */
+.loader {
+  animation: rotate 1s infinite;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 20px;
+  width: 20px;
+}
+.loader:before {
+  animation: ball1 1s infinite;
+  background-color: #cb2025;
+  box-shadow: 30px 0 0 #f8b334;
+  margin-bottom: 10px;
+}
+.loader:after {
+  animation: ball2 1s infinite;
+  background-color: #00a096;
+  box-shadow: 30px 0 0 #97bf0d;
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg) scale(0.8);
+    -moz-transform: rotate(0deg) scale(0.8);
+  }
+  50% {
+    -webkit-transform: rotate(360deg) scale(1.2);
+    -moz-transform: rotate(360deg) scale(1.2);
+  }
+  100% {
+    -webkit-transform: rotate(720deg) scale(0.8);
+    -moz-transform: rotate(720deg) scale(0.8);
+  }
+}
+
+@keyframes ball1 {
+  0% {
+    box-shadow: 30px 0 0 #f8b334;
+  }
+  50% {
+    box-shadow: 0 0 0 #f8b334;
+    margin-bottom: 0;
+    -webkit-transform: translate(15px, 15px);
+    -moz-transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 #f8b334;
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes ball2 {
+  0% {
+    box-shadow: 30px 0 0 #97bf0d;
+  }
+  50% {
+    box-shadow: 0 0 0 #97bf0d;
+    margin-top: -20px;
+    -webkit-transform: translate(15px, 15px);
+    -moz-transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 #97bf0d;
+    margin-top: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+/* end of loader styling */
+
+.none {
+  display: none;
+  height: 60vh;
+  background-color: white;
+  overflow: hidden;
+  width: 60%;
+  margin-top: -180px;
+  position: fixed;
+  left: 15%;
+  z-index: 9;
+  padding: 30px;
+  box-shadow: 3px 3px grey;
+  border-left: 3px solid grey;
+  border-top: 1px solid grey;
+  background-image: repeating-radial-gradient(red, yellow, blue, grey);
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#menu {
+  left: 20px;
+  font-size: 4em;
+  font-weight: 800;
+  z-index: 111;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+  -webkit-transition: all 0.25s;
+  position: absolute;
+}
+
+#menu:hover {
+  transform: rotate(90deg);
+  color: #ff9900;
+}
+
+#lgMenu ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 75px;
+}
+
+#lgMenu li {
+  text-transform: uppercase;
+  height: 80px;
+  line-height: 10px;
+  padding: 10px;
+  margin: auto;
+  color: black;
+  cursor: pointer;
+  font-size: 0.7em;
+  letter-spacing: 0.2em;
+  transition: all 0.25s;
+  width: 90%;
+}
+
+#lgMenu li:hover {
+  background-color: red;
+  color: black;
+  letter-spacing: 0.1em;
+}
+
+#lgMenu {
+  width: 300px;
+  height: 115vh;
+  top: 0;
+  left: -300px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 11;
+  opacity: 0;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+}
+
+#exit {
+  position: absolute;
+  right: 10px;
+  padding: 0px;
+  top: -10px;
+  font-size: 4em;
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+}
+#exit:hover {
+  color: #ff9900;
+}
+
+#lgMenu.enter {
+  opacity: 1;
+  left: 0;
+}
+.active {
+  background-color: red;
+}
+.bg1 {
+  background-image: url("./images/bg.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  overflow: hidden;
+}
+.bg-cover {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.284);
+  overflow: hidden;
+}
+.welcome {
+  text-align: center;
+  margin: auto;
+  margin-top: 200px;
+  color: white;
+  /* background-color: rgba(240, 248, 255, 0.29); */
+  width: 50%;
+}
+.welcome-text {
+  font-size: 40px;
+}
+.welcome-subtext {
+  font-size: 30px;
+}
+.tw {
+  background-color: rgba(255, 255, 255, 0.433);
+}
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 2s; /* You can change this to specify how long you want the fade in animation to last */
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards; /* This makes the element stay at the target style */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.profileCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 770px) {
+  .profile-img-cont {
+    float: left;
+  }
+  .dd {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

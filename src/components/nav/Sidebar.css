@@ -4,12 +4,16 @@
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   overflow: auto;
+  transition: ease-in 2s;
 }
 
 .menu {
   list-style-type: none;
   padding: 0;
   text-align: center;
+}
+.active {
+  background-color: white;
 }
 
 .menu li {

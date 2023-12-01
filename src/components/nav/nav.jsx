@@ -59,22 +59,31 @@ export const NavBar = ({ cookies, setCookies }) => {
 
     <div class="header">
       <a href="#default" class="logo">
-        UTME Subject Recomdation{" "}
+        UTME Subject Recomdation
       </a>
       <div class="header-right">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/programs">Programs</NavLink>
-        <a href="#about">About</a>
-        {cookies.token ? (
+        {cookies.userType === "ADMIN" ? (
           <>
-            <NavLink to="/user/dashboard">Dashboard</NavLink>
-
             <button className="btn btn-primary">Logout</button>
           </>
         ) : (
-          <NavLink to="/login" className="btn btn-primary">
-            Login
-          </NavLink>
+          <>
+            <NavLink to="/">Home</NavLink>
+
+            <NavLink to="/programs">Programs</NavLink>
+            <a href="#about">About</a>
+            {cookies.token ? (
+              <>
+                <NavLink to="/user/dashboard">Dashboard</NavLink>
+
+                <button className="btn btn-primary">Logout</button>
+              </>
+            ) : (
+              <NavLink to="/login" className="btn btn-primary">
+                Login
+              </NavLink>
+            )}
+          </>
         )}
       </div>
     </div>

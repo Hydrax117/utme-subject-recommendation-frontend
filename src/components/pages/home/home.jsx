@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Footer } from "../../footer/footer";
+import style from "../home/home.module.css";
 export const Home = () => {
   const [isLoading, setIsloading] = useState(true);
 
@@ -14,6 +15,39 @@ export const Home = () => {
         <div className="loader"></div>
       ) : (
         <>
+          <div className={style.section}>
+            <div className={style.Homecontainer}>
+              <div className="row">
+                <div className="col-md-6" style={{ height: "700px" }}>
+                  <div className={style.bg_img}>
+                    <div className={style.bg}></div>
+                  </div>
+                </div>
+
+                <div className="col-md-6" style={{ height: "700px" }}>
+                  <div className={style.welcome}>
+                    <h1 style={{ fontSize: "70px" }}>Welcome </h1>
+                    <h3>To UTME Subject Recommendation System</h3>
+                    <h4>The First Of Its Kind...</h4>
+                    <h6>
+                      "We provide students with the appropriate UTME subject
+                      base on their selected institution and field of study"
+                    </h6>
+                    <hr />
+                    <p></p>
+                    <button
+                      className={style.get_started}
+                      onClick={() => {
+                        window.location.assign("/register");
+                      }}
+                    >
+                      Get Started
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <Footer />
         </>
       )}

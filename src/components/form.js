@@ -14,9 +14,9 @@ export const Form = styled.div`
   margin: auto;
   margin-top: 5%;
   text-align: center;
-  height: 400px;
+  height: 450px;
   padding: 40px;
-  background: grey;
+  background: white;
   box-shadow: 1px 2px 2px 2px;
   @media only screen and (max-width: 1000px) {
     width: 100%;

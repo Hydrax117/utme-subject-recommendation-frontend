@@ -1,15 +1,16 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { App } from "./app";
-import "bootstrap/dist/css/bootstrap.min.css";
-import ThemeContext from "./infrastructure/themeContex/themeContext";
-import { Theme } from "./infrastructure/theme";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ThemeContext.Provider value={Theme}>
-    <App />
-  </ThemeContext.Provider>
+  <React.StrictMode>
+    <Suspense fallback="loading">
+      <App />
+    </Suspense>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

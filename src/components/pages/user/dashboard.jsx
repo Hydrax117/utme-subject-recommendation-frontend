@@ -26,6 +26,8 @@ const UserDashboard = () => {
   const [user, setUser] = useState([]);
   const [isLoggedin, setIsLoggedin] = useState("");
   const [isLoading, setIsloading] = useState(true);
+  const url = window.location.href;
+  console.log(url);
 
   const fetchCandidate = async () => {
     try {

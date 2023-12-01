@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  height: 120px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.navList {
+  width: 40%;
+}
+.navList ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  line-height: 120px;
+  list-style: none;
+}
+.logo {
+  height: 120px;
+  width: 150px;
+  padding: 0 30px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+  }
+  .navList {
+    width: 100%;
+  }
+  .navList ul {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .navList ul li {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+  }
+}
